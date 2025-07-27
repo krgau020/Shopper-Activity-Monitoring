@@ -48,35 +48,58 @@ To build an end-to-end, pose-based human action classification pipeline for reta
 
 ## training:
   description: "Train the BiLSTM + Attention model using pose keypoints"
+
   command: python train_model.py
+
   notes:
     - "Edit `train_model.py` to configure paths and class names"
+
     - "Input shape: [30 frames, 44 features]"
+
     - "Architecture: 3-layer BiLSTM + Attention + FC layers"
+
     - "Loss: CrossEntropyLoss"
+
     - "Optimizer: Adam"
 
 ## inference:
   description: "Run inference on video to predict shopper actions"
+
   command: python inference.py
+
   behavior:
+
     - "Loads trained model checkpoint"
+
     - "Extracts pose and hand keypoints with MediaPipe"
+
     - "Predicts action every 30 frames"
+
     - "Saves keypoints to .txt file"
+
     - "Displays FPS and predicted action per window"
 
 ## sample_output:
+
   example_terminal_output:
+
     - "Frame 30: Predicted action - Inspecting"
+
     - "Frame 60: Predicted action - Reach to shelf"
 
 ## dependencies:
+
   required_packages:
+
     - torch
+
     - torchmetrics
+
     - opencv-python
+
     - mediapipe
+
     - numpy
-  source: requirements.txt
+
+
 
